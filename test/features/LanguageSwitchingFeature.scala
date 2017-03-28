@@ -4,7 +4,10 @@ import com.github.tomakehurst.wiremock.client.WireMock
 import com.github.tomakehurst.wiremock.client.WireMock._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import org.scalatestplus.play.OneAppPerSuite
+import play.api.Application
 import play.api.i18n.Messages
+import play.api.inject.guice.GuiceApplicationBuilder
 import play.api.test.FakeApplication
 import support.StubbedFeatureSpec
 import support.page.SurveyPage._
@@ -12,13 +15,12 @@ import support.page.{UnauthenticatedFeedbackPage, SurveyConfirmationPageWelsh, S
 import uk.gov.hmrc.play.test.WithFakeApplication
 
 @RunWith(classOf[JUnitRunner])
-class LanguageSwitchingFeature extends StubbedFeatureSpec with WithFakeApplication {
-  override lazy val app = FakeApplication(
-    additionalConfiguration = Map(
+class LanguageSwitchingFeature extends StubbedFeatureSpec with OneAppPerSuite {
+  override lazy val app: Application = GuiceApplicationBuilder().configure(Map(
       "application.langs" -> "en,cy",
       "govuk-tax.Test.enableLanguageSwitching" -> true
     )
-  )
+  ).build()
 
   feature("Language Switching") {
     scenario("Switch from English to Welsh in the survey") {
