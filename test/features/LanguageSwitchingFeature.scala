@@ -15,7 +15,7 @@ import support.page.{UnauthenticatedFeedbackPage, SurveyConfirmationPageWelsh, S
 import uk.gov.hmrc.play.test.WithFakeApplication
 
 @RunWith(classOf[JUnitRunner])
-class LanguageSwitchingFeature extends StubbedFeatureSpec with OneAppPerSuite {
+class LanguageSwitchingFeature extends StubbedFeatureSpec {
   override lazy val app: Application = GuiceApplicationBuilder().configure(Map(
       "application.langs" -> "en,cy",
       "govuk-tax.Test.enableLanguageSwitching" -> true
