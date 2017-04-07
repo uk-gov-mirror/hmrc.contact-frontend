@@ -6,8 +6,12 @@
     <header class="page-header">
         <h1>@Messages("contact.heading")</h1>
     </header>
-    <p>@Html(Messages("contact.form.specific.query", uk.gov.hmrc.urls.Link.toExternalPage(url = "http://search2.hmrc.gov.uk/kb5/hmrc/contactus/home.page", value = Some("contact HMRC"), dataAttributes = Some(Map
-            ("journey-click" -> "contact-page:Click:Contact HMRC"))).toHtml))</p>
+    <p>@Html(
+        Messages("contact.form.specific.query",
+        uk.gov.hmrc.urls.Link.toExternalPage(url = "http://search2.hmrc.gov.uk/kb5/hmrc/contactus/home.page",
+        value = Some("contact HMRC"),
+        dataAttributes = Some(Map("journey-click" -> "contact-page:Click:Contact HMRC"))
+        ).toHtml))</p>
     <p>@Messages("contact.form.please.fill")</p>
 
     <h2>@Messages("contact.form.how.help")</h2>

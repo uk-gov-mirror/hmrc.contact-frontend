@@ -95,31 +95,6 @@ class SurveyFeature extends StubbedFeatureSpec {
 
       Given("I go to the survey form page")
       goOn(new SurveyPageWithTicketAndServiceIds("HMRC-Z2V6AUK5",""))
-
-      When("I successfully fill in the form")
-      selectHowHelpfulTheResponseWas("strongly-agree")
-      selectHowSpeedyTheResponseWas("strongly-agree")
-      setAdditionalComment("Your mother is a hamster and your father smelled of elderberry!")
-
-      And("Submit the form")
-      clickSubmitButton()
-
-      Then("The data should not get sent to 'audit land'")
-      shouldNotSendSurveyToDatastream
-    }
-
-    scenario("Survey form errors, but still shows confirmation page") {
-
-      WireMock.stubFor(post(urlEqualTo("/write/audit")).willReturn(aResponse().withStatus(500)))
-
-      Given("I go to the survey form page")
-        goOn(new SurveyPageWithTicketAndServiceIds("HMRC-Z2V6DUK5","arbitrary%20service%20id"))
-
-      When("I successfully fill in the form")
-        selectHowHelpfulTheResponseWas("strongly-agree")
-        selectHowSpeedyTheResponseWas("strongly-agree")
-        setAdditionalComment("Blah blooh blah la dee daaaaa")
-
       And("Submit the form")
         clickSubmitButton()
 
@@ -129,6 +104,31 @@ class SurveyFeature extends StubbedFeatureSpec {
       And("I should see the failure page, but i cant determine a failure has occurred, so i show the conf page. lovely.")
         on(SurveyConfirmationPage)
     }
+
+
+    When("I successfully fill in the form")
+    selectHowHelpfulTheResponseWas("strongly-agree")
+    selectHowSpeedyTheResponseWas("strongly-agree")
+    setAdditionalComment("Your mother is a hamster and your father smelled of elderberry!")
+
+    And("Submit the form")
+    clickSubmitButton()
+
+    Then("The data should not get sent to 'audit land'")
+    shouldNotSendSurveyToDatastream
+  }
+
+  scenario("Survey form errors, but still shows confirmation page") {
+
+    WireMock.stubFor(post(urlEqualTo("/write/audit")).willReturn(aResponse().withStatus(500)))
+
+    Given("I go to the survey form page")
+    goOn(new SurveyPageWithTicketAndServiceIds("HMRC-Z2V6DUK5","arbitrary%20service%20id"))
+
+    When("I successfully fill in the form")
+    selectHowHelpfulTheResponseWas("strongly-agree")
+    selectHowSpeedyTheResponseWas("strongly-agree")
+    setAdditionalComment("Blah blooh blah la dee daaaaa")
 
     scenario("Survey submitted with no radio button selections, but still shows confirmation page") {
 

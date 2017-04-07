@@ -1,7 +1,5 @@
 .*
-
 !.gitignore
-
 .cache
 /.classpath
 db
@@ -18,6 +16,7 @@ lib
 lib_managed
 log
 logs
+modules
 /out
 precompiled
 /.project
@@ -26,9 +25,24 @@ project/target
 /RUNNING_PID
 server.pid
 /.settings
-target
 .target
 test-result
 tmp
 .idea_modules
 bin
+*.class
+*.log
+/BrowserStackLocal
+/BrowserStackLocal-linux-x64.zip
+
+ZAP*
+# sbt specific
+dist/*
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+
+# Scala-IDE specific
+.scala_dependencies
