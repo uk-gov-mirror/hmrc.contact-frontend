@@ -1,7 +1,7 @@
 .*
--
+
 !.gitignore
--
+
 .cache
 /.classpath
 db
@@ -27,7 +27,7 @@ project/target
 /RUNNING_PID
 server.pid
 /.settings
--target
+target
 .target
 test-result
 tmp
