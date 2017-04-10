@@ -1,0 +1,12 @@
+[0m[[0minfo[0m] [0m[32mProblemReportsControllerSpec:[0m[0m
+[0m[[0minfo[0m] [0m[32mReporting a problem[0m[0m
+[0m[[0minfo[0m] [0m[32m- should return 200 and a valid html page for a valid request and js is not enabled for an unauthenticated user[0m[0m
+[0m[[0minfo[0m] [0m[32m- should return 200 and a valid html page for a valid request and js is not enabled for an authenticated user[0m[0m
+[0m[[0minfo[0m] [0m[32m- should return 200 and a valid json for a valid request and js is enabled[0m[0m
+[0m[[0minfo[0m] [0m[32m- should return 200 and a valid html page for invalid input and js is not enabled[0m[0m
+[0m[[0minfo[0m] [0m[32m- should return 400 and a valid json for invalid input and js is enabled[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the email has invalid syntax (for DeskPRO)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the name has invalid characters - Javascript disabled[0m[0m
+[0m[[0minfo[0m] [0m[32m- should Return error page if the Deskpro ticket creation fails - Javascript disabled[0m[0m
+[0m[[0minfo[0m] [0m[32m- should render the thank you message given[0m[0m
+[0m[[0minfo[0m] [0m[32m- should render the default thank you message if one is not provided[0m[0m

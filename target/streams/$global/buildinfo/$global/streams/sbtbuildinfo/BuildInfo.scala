@@ -12,22 +12,22 @@ case object BuildInfo {
   val sbtVersion = "0.13.8"
   /** The value is Seq("org.scala-lang:scala-library:2.11.6", "com.typesafe.play:twirl-api:1.1.1", "com.typesafe.play:play-server:2.5.12", "com.typesafe.play:play-test:2.5.12:test", "com.typesafe.play:play-omnidoc:2.5.12:docs", "com.typesafe.play:play-netty-server:2.5.12", "com.typesafe.play:play-logback:2.5.12", "uk.gov.hmrc:frontend-bootstrap:7.17.0", "uk.gov.hmrc:play-authorised-frontend:6.3.0", "uk.gov.hmrc:play-config:4.3.0", "uk.gov.hmrc:logback-json-logger:3.1.0", "uk.gov.hmrc:play-health:2.1.0", "uk.gov.hmrc:play-ui:7.0.0", "uk.gov.hmrc:govuk-template:5.1.0", "uk.gov.hmrc:url-builder:2.1.0", "org.apache.httpcomponents:httpclient:4.4.1", "org.scalatest:scalatest:2.2.6:test", "org.scalatestplus.play:scalatestplus-play:1.5.1:test", "org.mockito:mockito-all:1.9.5:test", "org.pegdown:pegdown:1.6.0:test", "org.jsoup:jsoup:1.7.3:test", "com.github.tomakehurst:wiremock:1.58:test", "uk.gov.hmrc:scala-webdriver:5.12.0:test", "uk.gov.hmrc:hmrctest:2.1.0:test", "org.seleniumhq.selenium:selenium-java:2.52.0:test"). */
   val libraryDependencies = Seq("org.scala-lang:scala-library:2.11.6", "com.typesafe.play:twirl-api:1.1.1", "com.typesafe.play:play-server:2.5.12", "com.typesafe.play:play-test:2.5.12:test", "com.typesafe.play:play-omnidoc:2.5.12:docs", "com.typesafe.play:play-netty-server:2.5.12", "com.typesafe.play:play-logback:2.5.12", "uk.gov.hmrc:frontend-bootstrap:7.17.0", "uk.gov.hmrc:play-authorised-frontend:6.3.0", "uk.gov.hmrc:play-config:4.3.0", "uk.gov.hmrc:logback-json-logger:3.1.0", "uk.gov.hmrc:play-health:2.1.0", "uk.gov.hmrc:play-ui:7.0.0", "uk.gov.hmrc:govuk-template:5.1.0", "uk.gov.hmrc:url-builder:2.1.0", "org.apache.httpcomponents:httpclient:4.4.1", "org.scalatest:scalatest:2.2.6:test", "org.scalatestplus.play:scalatestplus-play:1.5.1:test", "org.mockito:mockito-all:1.9.5:test", "org.pegdown:pegdown:1.6.0:test", "org.jsoup:jsoup:1.7.3:test", "com.github.tomakehurst:wiremock:1.58:test", "uk.gov.hmrc:scala-webdriver:5.12.0:test", "uk.gov.hmrc:hmrctest:2.1.0:test", "org.seleniumhq.selenium:selenium-java:2.52.0:test")
-  /** The value is "2017-04-06". */
-  val builtAt = "2017-04-06"
+  /** The value is "2017-04-10". */
+  val builtAt = "2017-04-10"
   /** The value is "play2512test". */
   val GitBranch = "play2512test"
-  /** The value is "55d80697f490057efed3368c5a1a0909a4f8a423". */
-  val GitHeadRev = "55d80697f490057efed3368c5a1a0909a4f8a423"
+  /** The value is "8b470e68976f2127ae440f78e1c32d3c6c1e2397". */
+  val GitHeadRev = "8b470e68976f2127ae440f78e1c32d3c6c1e2397"
   /** The value is "false". */
   val GitRepoIsClean = "false"
-  /** The value is "2017-03-28T16:36:23.000+01:00". */
-  val GitCommitDate = "2017-03-28T16:36:23.000+01:00"
+  /** The value is "2017-04-07T09:50:44.000+01:00". */
+  val GitCommitDate = "2017-04-07T09:50:44.000+01:00"
   /** The value is "samuel-raspin". */
   val GitCommitAuthor = "samuel-raspin"
-  /** The value is "2017-04-06T14:49:57.390+01:00". */
-  val BuildDate = "2017-04-06T14:49:57.390+01:00"
-  /** The value is "release/3.19.0-13-g55d8069". */
-  val GitDescribe = "release/3.19.0-13-g55d8069"
+  /** The value is "2017-04-10T13:51:20.065+01:00". */
+  val BuildDate = "2017-04-10T13:51:20.065+01:00"
+  /** The value is "release/3.19.0-15-g8b470e6". */
+  val GitDescribe = "release/3.19.0-15-g8b470e6"
   override val toString = "name: %s, version: %s, scalaVersion: %s, sbtVersion: %s, libraryDependencies: %s, builtAt: %s, GitBranch: %s, GitHeadRev: %s, GitRepoIsClean: %s, GitCommitDate: %s, GitCommitAuthor: %s, BuildDate: %s, GitDescribe: %s" format (name, version, scalaVersion, sbtVersion, libraryDependencies, builtAt, GitBranch, GitHeadRev, GitRepoIsClean, GitCommitDate, GitCommitAuthor, BuildDate, GitDescribe)
 
   val toMap = Map[String, Any](

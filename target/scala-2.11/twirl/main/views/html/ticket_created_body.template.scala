@@ -47,7 +47,7 @@ Seq[Any](format.raw/*1.96*/("""
 object ticket_created_body extends ticket_created_body_Scope0.ticket_created_body
               /*
                   -- GENERATED --
-                  DATE: Thu Mar 30 11:37:42 BST 2017
+                  DATE: Mon Apr 10 13:51:25 BST 2017
                   SOURCE: /home/sam/Applications/hmrc-development-environment/hmrc/ddct/bta/contact-frontend/app/views/ticket_created_body.scala.html
                   HASH: c85e1ff07d5210130b283493e12ed9060e3f09b6
                   MATRIX: 584->1|773->95|801->97|863->133|911->161|987->211|1015->219|1048->227|1141->300

@@ -1,0 +1,9 @@
+[0m[[0minfo[0m] [0m[32mMessagesSpec:[0m[0m
+[0m[[0minfo[0m] [0m[32mApplication[0m[0m
+[0m[[0minfo[0m] [0m[32m- should have the correct message configs[0m[0m
+[0m[[0minfo[0m] [0m[32m- should have messages for default and cy only[0m[0m
+[0m[[0minfo[0m] [0m[32mAll message files[0m[0m
+[0m[[0minfo[0m] [0m[32m- should have the same set of keys[0m[0m
+[0m[[0minfo[0m] [0m[32m- should have a non-empty message for each key[0m[0m
+[0m[[0minfo[0m] [0m[32m- should have no unescaped single quotes in value[0m[0m
+[0m[[0minfo[0m] [0m[32m- should have a resolvable message for keys which take args[0m[0m

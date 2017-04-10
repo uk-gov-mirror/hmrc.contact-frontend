@@ -1,0 +1,17 @@
+[0m[[0minfo[0m] [0m[32mFieldTransformerSpec:[0m[0m
+[0m[[0minfo[0m] [0m[32mField Transformer[0m[0m
+[0m[[0minfo[0m] [0m[32m- should transform javascript not enabled[0m[0m
+[0m[[0minfo[0m] [0m[32m- should transform javascript  enabled[0m[0m
+[0m[[0minfo[0m] [0m[32m- should use area of tax as unknown[0m[0m
+[0m[[0minfo[0m] [0m[32m- should transform userId in the header carrier to user id[0m[0m
+[0m[[0minfo[0m] [0m[32m- should transform no userId in the header carrier to n/a[0m[0m
+[0m[[0minfo[0m] [0m[32m- should transforms userId in the header carrier to user id[0m[0m
+[0m[[0minfo[0m] [0m[32m- should transforms userId in the header carrier to n/a if the suppressUserIdInSupportRequests session key is set to true[0m[0m
+[0m[[0minfo[0m] [0m[32m- should transforms no userId in the header carrier to n/a[0m[0m
+[0m[[0minfo[0m] [0m[32m- should transform  sessionId in the header carrier to session id[0m[0m
+[0m[[0minfo[0m] [0m[32m- should transform no sessionId in the header carrier to n/a[0m[0m
+[0m[[0minfo[0m] [0m[32m- should transform user agent in the request headers to user agent[0m[0m
+[0m[[0minfo[0m] [0m[32m- should transform no user agent in the request headers to n/a[0m[0m
+[0m[[0minfo[0m] [0m[32m- should transform non authorised user to UserTaxIdentifiers containing no identifiers[0m[0m
+[0m[[0minfo[0m] [0m[32m- should transform paye authorised user to UserTaxIdentifiers containing one identifier i.e. the SH233544B[0m[0m
+[0m[[0minfo[0m] [0m[32m- should transform business tax authorised user to UserTaxIdentifiers containing all the Business Tax Identifiers[0m[0m

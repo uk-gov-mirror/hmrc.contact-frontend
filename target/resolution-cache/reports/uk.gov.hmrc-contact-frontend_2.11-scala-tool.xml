@@ -7,7 +7,7 @@
 		revision="999-SNAPSHOT"
 		conf="scala-tool"
 		confs="universal, universal-docs, universal-src, compile, runtime, test, provided, optional, windows, docker, linux, rpm, debian, it, fun, smoke, compile-internal, runtime-internal, test-internal, it-internal, plugin, sources, docs, pom, scala-tool"
-		date="20170330113823"/>
+		date="20170410135120"/>
 	<dependencies>
 		<module organisation="org.scala-lang" name="scala-compiler">
 			<revision name="2.11.6" status="release" pubdate="20150226010127" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" downloaded="false" searched="false" default="false" conf="default, compile, runtime, optional, optional(default), master" position="0">

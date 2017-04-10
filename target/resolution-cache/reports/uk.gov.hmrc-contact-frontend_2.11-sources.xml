@@ -7,7 +7,7 @@
 		revision="999-SNAPSHOT"
 		conf="sources"
 		confs="universal, universal-docs, universal-src, compile, runtime, test, provided, optional, windows, docker, linux, rpm, debian, it, fun, smoke, compile-internal, runtime-internal, test-internal, it-internal, plugin, sources, docs, pom, scala-tool"
-		date="20170330113823"/>
+		date="20170410135120"/>
 	<dependencies>
 	</dependencies>
 </ivy-report>

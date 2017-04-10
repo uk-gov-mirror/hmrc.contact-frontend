@@ -7,7 +7,7 @@
 		revision="999-SNAPSHOT"
 		conf="compile-internal"
 		confs="universal, universal-docs, universal-src, compile, runtime, test, provided, optional, windows, docker, linux, rpm, debian, it, fun, smoke, compile-internal, runtime-internal, test-internal, it-internal, plugin, sources, docs, pom, scala-tool"
-		date="20170330113823"/>
+		date="20170410135120"/>
 	<dependencies>
 		<module organisation="uk.gov.hmrc" name="url-builder_2.11">
 			<revision name="2.1.0" status="release" pubdate="20170306112534" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/hmrc/url-builder" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="98">
