@@ -16,8 +16,8 @@ class HmrcDeskproConnector @Inject() (http : HttpClient, environment : Environme
 
   def serviceUrl: String = baseUrl("hmrc-deskpro")
 
-  def createDeskProTicket(name: String, email: String, subject: String, message: String, referrer: String, isJavascript: Boolean, request: Request[AnyRef], enrolmentsOption: Option[Enrolments], service: Option[String])(implicit hc: HeaderCarrier): Future[TicketId] = {
-    val ticket = Ticket.create(name, email, subject, message, referrer, isJavascript, hc, request, enrolmentsOption, service)
+  def createDeskProTicket(name: String, email: String, subject: String, message: String, referrer: String, isJavascript: Boolean, request: Request[AnyRef], enrolmentsOption: Option[Enrolments], service: Option[String], abFeature: Option[String])(implicit hc: HeaderCarrier): Future[TicketId] = {
+    val ticket = Ticket.create(name, email, subject, message, referrer, isJavascript, hc, request, enrolmentsOption, service, abFeature)
     http.POST[Ticket, TicketId](requestUrl("/deskpro/get-help-ticket"), ticket) recover {
       case nf: NotFoundException => throw new Upstream5xxResponse(nf.getMessage, 404, 500)
    }

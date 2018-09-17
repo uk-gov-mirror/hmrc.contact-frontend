@@ -107,7 +107,8 @@ class ProblemReportsController @Inject()(val hmrcDeskproConnector: HmrcDeskproCo
       isJavascript = problemReport.isJavascript,
       request = request,
       enrolmentsOption = enrolmentsOption,
-      service = problemReport.service
+      service = problemReport.service,
+      abFeature = Some("Feature V1")
     )
   }
 
@@ -122,7 +123,8 @@ class ProblemReportsController @Inject()(val hmrcDeskproConnector: HmrcDeskproCo
       isJavascript = problemReport.isJavascript,
       request = request,
       enrolmentsOption = enrolmentsOption,
-      service = problemReport.service
+      service = problemReport.service,
+      abFeature = Some("Feature V2")
     )
   }
 

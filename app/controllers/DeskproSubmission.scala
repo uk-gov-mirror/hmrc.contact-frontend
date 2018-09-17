@@ -24,7 +24,8 @@ trait DeskproSubmission {
       isJavascript = data.isJavascript,
       request = request,
       enrolmentsOption = enrolments,
-      service = data.service)
+      service = data.service,
+      abFeature = Some("UnknownFeature"))
   }
 
   def createDeskproFeedback(data: FeedbackForm, enrolments: Option[Enrolments])(implicit request: Request[AnyContent], hc: HeaderCarrier) : Future[TicketId] = {
