@@ -49,9 +49,8 @@ Requests of this type are forwarded to *Deskpro* with a subject *"Support Reques
 Contents of *action* and *error* fields is concatenated and placed in the ticket body.
 
 UI components allowing to use the form are provided by the [play-ui](https://github.com/hmrc/play-ui) library.
-Play UI library contains Twirl template that allows to render "Get help with this page" link in the footer
-of the standard HMRC page, provided that you use *hmrcGovUkTemplate* template. In order to use it, you have add the following changes
-in the file where you use *hmrcGovUkTemplate*:
+Play UI library contains a Twirl template that allows you to render the "Get help with this page" link in the footer
+of the standard HMRC page, provided that you use *hmrcGovUkTemplate* template. In order to use it, you have add the following changes in the file where you use *hmrcGovUkTemplate*:
 1) Define 'get help form component'
 ```
 @getHelpForm = @{
@@ -158,9 +157,9 @@ If you want to display this form as a standalone page, you should render such a 
 * if user is authenticated - `https://www.{environment}.tax.service.gov.uk/contact/beta-feedback?service=${serviceId}&additional parameters`
 
 Customization flags:
-* *service* - consuming services should specify their identifier as a 'service' parameter of requests to contact-frontend. Value of this parameter will be later passed to Splunk and would allow to properly analyze feedback
-* *canOmitComments* - consuming services can decide that 'comments' field is optional. In order to do that, consuming service have to add 'canOmitComments=true' field to the requst
-* *backURL* - (only for standalone page). Beta feedback form can contain 'Back' button redirecting user back to consuming service. In order to achieve that, the consuming service has to specify destination URL.
+* *service* - consuming services should specify their identifier as a 'service' parameter of requests to contact-frontend. Value of this parameter will be later passed to Splunk and will allow you to properly analyze feedback
+* *canOmitComments* - consuming services can decide that the 'comments' field is optional. In order to to that, the consuming service must add 'canOmitComments=true' field to the request
+* *backURL* - (only for standalone page). Beta feedback form can contain 'Back' button redirecting the user back to the consuming service. In order to achieve that, the consuming service has to specify destination URL.
 
 If you want to embed feedback form on your page, you have to create endpoints in your frontend service that redirect user's requests to contact-frontend and wrap HTML code
 returned in a response in your services layout. Three requests need to be handled:
