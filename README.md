@@ -6,7 +6,7 @@ The service allows users to contact HMRC Customer Contact team for the catalogue
 * providing feedback about the service
 * providing feedback about how the issue was solved by HMRC Customer Contact team
 
-Contact-frontend retrieves is responsible for showing the forms listed above, validating the input and
+Contact-frontend is responsible for showing the forms listed above, validating the input and
 passing user requests to downstream services - DeskPro (reporting problems, service feedback) and Splunk datastore 
 (feedback about customer contact).
 
@@ -40,8 +40,8 @@ Here is a screenshot of the form:
 ![alt tag](docs/get-help.png)
 
 This contact form consists of the following fields:
-- an users name
-- an users email address
+- user's name
+- user's email address
 - an action performed by the user
 - an error seen by the user
 
@@ -99,11 +99,11 @@ This functionality can be used by services in two modes:
 * form included in the underlying page, retrieved by partial
 
 If you want to use standalone version of the form, you have to redirect the user to one of the following URLs:
-* if user is unauthenticated - `https://www.development.tax.service.gov.uk/contact/contact-hmrc-unauthenticated?service=${serviceId}`
-* if user is authenticated - `https://www.development.tax.service.gov.uk/contact/contact-hmrc?service=${serviceId}`
+* if user is unauthenticated - `https://www.{environment}.tax.service.gov.uk/contact/contact-hmrc-unauthenticated?service=${serviceId}`
+* if user is authenticated - `https://www.{environment}.tax.service.gov.uk/contact/contact-hmrc?service=${serviceId}`
 
 `Help and contact` also historically was supporting showing *Help and contact* page as a partial - however this
-functionality is deprecated and should'nt be used.
+functionality is deprecated and shouldn't be used.
 
 [[Back to the top]](#top)
 
@@ -154,15 +154,15 @@ This functionality can be used in two modes:
 * form included in the underlying page, retrieved by partial and initially hidden
 
 If you want to display this form as a standalone page, you should render such a link on your page:
-* if user is unauthenticated - `https://www.development.tax.service.gov.uk/contact/beta-feedback-unauthenticated?service=${serviceId}&additinal parameters`
-* if user is authenticated - `https://www.development.tax.service.gov.uk/contact/beta-feedback?service=${serviceId}&additional parameters`
+* if user is unauthenticated - `https://www.{environment}.tax.service.gov.uk/contact/beta-feedback-unauthenticated?service=${serviceId}&additinal parameters`
+* if user is authenticated - `https://www.{environment}.tax.service.gov.uk/contact/beta-feedback?service=${serviceId}&additional parameters`
 
 Customization flags:
 * *service* - consuming services should specify their identifier as a 'service' parameter of requests to contact-frontend. Value of this parameter will be later passed to Splunk and would allow to properly analyze feedback
-* *canOmitComments* - consuming services can decide that 'comments' field is optional. In order to to that, consuming service have to add 'canOmitComments=true' field to the requst
+* *canOmitComments* - consuming services can decide that 'comments' field is optional. In order to do that, consuming service have to add 'canOmitComments=true' field to the requst
 * *backURL* - (only for standalone page). Beta feedback form can contain 'Back' button redirecting user back to consuming service. In order to achieve that, the consuming service has to specify destination URL.
 
-If you want to embed feedback form on your page, you have to create endpoints in your frontend service that redirect users requests to contact-frontend and wrap HTML code
+If you want to embed feedback form on your page, you have to create endpoints in your frontend service that redirect user's requests to contact-frontend and wrap HTML code
 returned in a response in your services layout. Three requests need to be handled:
 
 a) GET endpoint to show the form. This should result in making backend GET call to the endpoint 
@@ -177,7 +177,7 @@ b) POST endpoint to submit the form. This should return in making backent POST c
 `https://contact-frontend.public.mdtp/contact/beta-feedback/form?resubmitUrl`. Where *resubmitUrl* is a public facing URL to this endpoint
 
 In case form submission has succeeded, this endpoint returns HTTP 200 response containing identifier of the ticket
-that has been created. In such case the consuming service should redirect user to the endpoint that displays confirmation page (descripted below).
+that has been created. In such case the consuming service should redirect the user to the endpoint that displays confirmation page (descripted below).
 
 In case form submission fails, this endpoint returns HTTP 400 response containing HTML snippet containing the form with errors higlighted.
 This snippet has to be displayed again to the user.
