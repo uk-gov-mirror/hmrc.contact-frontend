@@ -3,7 +3,7 @@ package services
 import connectors.deskpro.HmrcDeskproConnector
 import connectors.deskpro.domain.TicketId
 import controllers.ContactForm
-import model.{AccessibilityForm, FeedbackForm, ProblemReport}
+import model.{AccessibilityForm, Covid19Form, FeedbackForm, ProblemReport}
 import org.apache.http.client.utils.URIBuilder
 import play.api.i18n.Messages
 import play.api.mvc.{AnyContent, Request}
@@ -18,6 +18,7 @@ trait DeskproSubmission {
 
   import DeskproSubmission.replaceRefererPath
 
+  private val Covid19Subject = "COVID-19 Support Request"
   private val Subject = "Contact form submission"
 
   protected def hmrcDeskproConnector: HmrcDeskproConnector
@@ -103,6 +104,22 @@ trait DeskproSubmission {
       service          = accessibilityForm.service,
       abFeatures       = None,
       userAction       = accessibilityForm.userAction
+    )
+  }
+
+  def createCovid19Ticket(covid19Form: Covid19Form, enrolments: Option[Enrolments])(implicit request: Request[AnyContent], hc: HeaderCarrier, messages: Messages): Future[TicketId] = {
+    hmrcDeskproConnector.createDeskProTicket(
+      name             = covid19Form.name,
+      email            = covid19Form.email,
+      subject          = Covid19Subject,
+      message          = problemMessage(covid19Form.doing, covid19Form.problem),
+      referrer         = replaceRefererPath(covid19Form.referer.getOrElse(""), covid19Form.userAction),
+      isJavascript     = covid19Form.isJavascript,
+      request          = request,
+      enrolmentsOption = enrolments,
+      service          = covid19Form.service,
+      abFeatures       = None,
+      userAction       = covid19Form.userAction
     )
   }
 

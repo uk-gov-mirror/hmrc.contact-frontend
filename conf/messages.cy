@@ -106,4 +106,16 @@ error.common.accessibility.problem.email_mandatory=Nodwch gyfeiriad e-bost.
 form.report.problem=Anfon
 what.happens.next=Yr hyn sy''n digwydd nesaf
 
+covid.heading=Get help with your Self Assessment and coronavirus (COVID-19)
+covid.message.para1=
+covid.subheading.doing=What do you want to do?
+covid.subheading.problem=What help do you need to do it?
+covid.subheading.contact=Eich manylion cyswllt
+covid.hint.contact=Byddwn ond yn defnyddio hwn i ateb eich neges.
 
+covid.confirmation.title=PLACEHOLDER Message Received Title
+covid.confirmation.text=PLACEHOLDER Complete text
+
+error.common.covid.doing.required=Enter details of what you are trying to do.
+error.common.covid.problem.required=Enter details of what you need help with.
+error.common.covid.toolong=Ni all y sylwadau fod yn hirach na 1000 o gymeriadau

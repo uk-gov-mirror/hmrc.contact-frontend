@@ -41,3 +41,7 @@ GET         /accessibility/thanks                        @controllers.Accessibil
 GET         /accessibility-unauthenticated               @controllers.AccessibilityController.unauthenticatedAccessibilityForm(service: Option[String], userAction: Option[String])
 POST        /accessibility-unauthenticated               @controllers.AccessibilityController.submitUnauthenticatedAccessibilityForm()
 GET         /accessibility-unauthenticated/thanks        @controllers.AccessibilityController.unauthenticatedThanks()
+
+GET         /covid                                       @controllers.Covid19Controller.covid19Form(service: Option[String], userAction: Option[String])
+GET         /covid/confirmation                          @controllers.Covid19Controller.confirmation()
+POST        /covid                                       @controllers.Covid19Controller.submitCovid19Form()
