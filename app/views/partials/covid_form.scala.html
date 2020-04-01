@@ -1,0 +1,72 @@
+@(covid19Form: Form[model.Covid19Form],
+  submitUrl: String,
+  renderFormOnly: Boolean = false)(implicit request: Request[_], lang : Lang, messages : Messages)
+
+@import uk.gov.hmrc.play.views.html.helpers._
+
+@if(covid19Form.hasErrors) {
+    <div class="error-summary error-summary--show" role="alert" aria-labelledby="error-summary-heading" tabindex="-1">
+
+        <h2 class="heading-medium error-summary-heading" id="error-summary-heading">
+        @messages("error.summary.title")
+        </h2>
+
+        <ul role="list" class="error-summary-list">
+        @covid19Form.errors.map{ error:FormError =>
+            <li><a href="#@{error.key}">@messages(error.message, error.args:_*)</a></li>
+        }
+        </ul>
+
+    </div>
+}
+
+
+@if(!renderFormOnly) {
+    <header class="page-header">
+        <h1>@Messages("covid.heading")</h1>
+    </header>
+    <p>@Messages("common.feedback.information.warning")</p>
+}
+
+
+
+<form action="@submitUrl" method="POST" class="form--feedback" novalidate="novalidate" id="covid-form">
+    <input type="hidden" name="csrfToken" value="@covid19Form("csrfToken").value"/>
+
+    <input type="hidden" name="service" id="service" value="@covid19Form("service").value"/>
+
+    @input_text(
+        covid19Form("name"),
+        label = Messages("form.name"),
+        inputClass = Some("form-control-3-4")
+    )
+
+    @input_text(
+        covid19Form("email"),
+        label =  Messages("covid.form.email.address"),
+        inputClass = Some("form-control-3-4"),
+        inputType = Some("email")
+    )
+
+    @input_textarea(
+        field = covid19Form("doing"),
+        inputClass = Some("unset-textarea-height"),
+        label = Messages("covid.subheading.doing"),
+        charLimit = Some(1000)
+    )
+
+    @input_textarea(
+        field = covid19Form("problem"),
+        inputClass = Some("unset-textarea-height"),
+        label = Messages("covid.subheading.problem"),
+        charLimit = Some(1000)
+    )
+
+    <input type="hidden" name="isJavascript" id="isJavascript" value="@covid19Form("isJavascript").value">
+    <input type="hidden" name="referer" id="referer" value="@covid19Form("referer").value">
+    <input type="hidden" name="userAction" id="userAction" value="@covid19Form("userAction").value">
+
+    <div class="form-field">
+        <button class="button" type="submit">@Messages("covid.form.report.problem")</button>
+    </div>
+</form>

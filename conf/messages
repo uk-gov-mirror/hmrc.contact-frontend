@@ -106,3 +106,17 @@ error.common.accessibility.problem.toolong=The comment cannot be longer than 200
 error.common.accessibility.problem.email_mandatory=Enter an email address.
 form.report.problem=Report Problem
 what.happens.next=What happens next
+
+covid.heading=Get help if you have been financially affected by coronavirus
+covid.subheading.doing=What were you looking for today?
+covid.subheading.problem=What help do you need?
+covid.form.email.address=Email
+covid.form.report.problem=Send
+
+covid.confirmation.title=Help and contact
+covid.confirmation.text=We will reply or let you know how we are dealing with your message within 2 working days.
+
+error.common.covid.doing.required=Enter details of what you are trying to do.
+error.common.covid.problem.required=Enter details of what you need help with.
+error.common.covid.toolong=The description cannot be longer than 1000 characters
+

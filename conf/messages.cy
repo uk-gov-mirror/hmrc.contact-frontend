@@ -106,4 +106,15 @@ error.common.accessibility.problem.email_mandatory=Nodwch gyfeiriad e-bost.
 form.report.problem=Anfon
 what.happens.next=Yr hyn sy''n digwydd nesaf
 
+covid.heading=Cael help os yw coronafeirws wedi effeithio arnoch yn ariannol
+covid.subheading.doing=Beth oeddech yn chwilio amdano heddiw?
+covid.subheading.problem=Pa help sydd ei angen arnoch?
+covid.form.email.address=E-bost
+covid.form.report.problem=Anfon
 
+covid.confirmation.title=Cymorth a chysylltiadau
+covid.confirmation.text=Byddwn yn ateb neu''n rhoi gwybod i chi sut y byddwn yn delio â''ch neges cyn pen 2 ddiwrnod gwaith.
+
+error.common.covid.doing.required=Enter details of what you are trying to do.
+error.common.covid.problem.required=Enter details of what you need help with.
+error.common.covid.toolong=Ni all y sylwadau fod yn hirach na 1000 o gymeriadau

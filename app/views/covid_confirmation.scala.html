@@ -1,0 +1,9 @@
+@import config.AppConfig
+
+@(loggedIn: Boolean = false)(implicit request : Request[_], lang : Lang, messages : Messages, appConfig : AppConfig)
+
+@main(title = Messages("covid.heading"), supportLinkEnabled = false, userLoggedIn = loggedIn, style = Some(helpers.wcag_style.render())) {
+
+ @views.html.partials.covid_form_confirmation()
+
+}

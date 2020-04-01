@@ -1,0 +1,19 @@
+@import config.AppConfig
+@import model.AccessibilityForm
+
+@(covid19Form: Form[model.Covid19Form], submitUrl: String, loggedIn: Boolean = false)(implicit request : Request[_], lang : Lang, messages : Messages, appConfig : AppConfig)
+
+@import uk.gov.hmrc.play.views.html.helpers._
+
+@pageTitle = @{
+    if(covid19Form.hasErrors){Messages("error.browser.title.prefix")+" "+Messages("covid.heading")} else Messages("covid.heading")
+}
+
+@main(title = pageTitle, supportLinkEnabled = false, userLoggedIn = loggedIn, style = Some(helpers.wcag_style.render())) {
+
+    @views.html.partials.covid_form(
+        covid19Form = covid19Form,
+        submitUrl = submitUrl,
+        renderFormOnly = false
+    )
+}

@@ -34,6 +34,17 @@ case class FeedbackForm(
   backUrl: Option[String],
   canOmitComments: Boolean)
 
+
+case class Covid19Form( name: String,
+                        email: String,
+                        doing: String,
+                        problem: String,
+                        isJavascript: Boolean,
+                        referer: Option[String],
+                        csrfToken: String,
+                        service: Option[String]    = Some("unknown"),
+                        userAction: Option[String] = None)
+
 object FeedbackForm {
   def apply(referer: String, csrfToken: String, backUrl: Option[String], canOmitComments: Boolean): FeedbackForm =
     FeedbackForm(
