@@ -37,6 +37,7 @@
     <input type="hidden" name="service" id="service" value="@covid19Form("service").value"/>
     @input_textarea(
         field = covid19Form("doing"),
+        inputClass = Some("unset-textarea-height"),
         label = Messages("covid.subheading.doing"),
         labelClass = Some("heading-large"),
         charLimit = Some(1000)
@@ -44,6 +45,7 @@
 
     @input_textarea(
         field = covid19Form("problem"),
+        inputClass = Some("unset-textarea-height"),
         label = Messages("covid.subheading.problem"),
         labelClass = Some("heading-large"),
         charLimit = Some(1000)
