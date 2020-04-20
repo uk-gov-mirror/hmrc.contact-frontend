@@ -56,8 +56,8 @@ class Covid19ControllerSpec  extends UnitSpec with WithFakeApplication {
       val errors = document.getElementsByClass("error-message").asScala
       errors.length should be(4)
       document.title() should be("Error: " + Messages("covid.heading"))
-      errors.exists(_.text().equals(Messages("error.common.covid.doing.required"))) shouldBe true
-      errors.exists(_.text().equals(Messages("error.common.covid.problem.required"))) shouldBe true
+      errors.exists(_.text().equals(Messages("error.common.problem_report.action_mandatory.b"))) shouldBe true
+      errors.exists(_.text().equals(Messages("problem_report.error"))) shouldBe true
       errors.exists(_.text().equals(Messages("error.common.problem_report.name_mandatory"))) shouldBe true
       errors.exists(_.text().equals(Messages("error.email"))) shouldBe true
 
@@ -153,7 +153,7 @@ class Covid19ControllerSpec  extends UnitSpec with WithFakeApplication {
       val errors = document.getElementsByClass("error-message").asScala
       errors.length should be(1)
       document.title() should be("Error: " + Messages("covid.heading"))
-      errors.exists(_.text().equals(Messages("error.common.covid.doing.required"))) shouldBe true
+      errors.exists(_.text().equals(Messages("error.common.problem_report.action_mandatory.b"))) shouldBe true
     }
 
     "display error if doing description is too long"  in new Covid19ControllerApp(fakeApplication){
@@ -183,7 +183,7 @@ class Covid19ControllerSpec  extends UnitSpec with WithFakeApplication {
       val errors = document.getElementsByClass("error-message").asScala
       errors.length should be(1)
       document.title() should be("Error: " + Messages("covid.heading"))
-      errors.exists(_.text().equals(Messages("error.common.covid.problem.required"))) shouldBe true
+      errors.exists(_.text().equals(Messages("problem_report.error"))) shouldBe true
     }
 
     "display error if problem description is too long"  in new Covid19ControllerApp(fakeApplication){

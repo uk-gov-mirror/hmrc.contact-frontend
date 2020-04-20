@@ -33,10 +33,14 @@ object Covid19FormBind {
         .verifying("error.email", validateEmail)
         .verifying("deskpro.email_too_long", email => email.size <= 255),
       "doing" -> text
-        .verifying("error.common.covid.doing.required", comment => !comment.trim.isEmpty)
+        // Waiting for Welsh translation
+        // .verifying("error.common.covid.doing.required", comment => !comment.trim.isEmpty)
+        .verifying("error.common.problem_report.action_mandatory.b", comment => !comment.trim.isEmpty)
         .verifying("error.common.covid.toolong", comment => comment.length <= 1000),
       "problem" -> text
-        .verifying("error.common.covid.problem.required", comment => !comment.trim.isEmpty)
+        // Waiting for Welsh translation
+        // .verifying("error.common.covid.problem.required", comment => !comment.trim.isEmpty)
+        .verifying("problem_report.error", comment => !comment.trim.isEmpty)
         .verifying("error.common.covid.toolong", comment => comment.length <= 1000),
       "isJavascript" -> boolean,
       "referer"      -> optional(text),
