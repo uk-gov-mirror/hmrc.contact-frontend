@@ -30,7 +30,7 @@ object Covid19FormBind {
         .verifying("error.common.problem_report.name_mandatory", name => !name.trim.isEmpty)
         .verifying("error.common.problem_report.name_too_long", name => name.length <= 70),
       "email" -> text
-        .verifying("error.email", validateEmail)
+        .verifying("error.common.problem_report.email_valid", validateEmail)
         .verifying("deskpro.email_too_long", email => email.size <= 255),
       "doing" -> text
         // Waiting for Welsh translation
