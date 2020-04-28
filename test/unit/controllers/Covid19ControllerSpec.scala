@@ -59,7 +59,7 @@ class Covid19ControllerSpec  extends UnitSpec with WithFakeApplication {
       errors.exists(_.text().equals(Messages("error.common.problem_report.action_mandatory.b"))) shouldBe true
       errors.exists(_.text().equals(Messages("problem_report.error"))) shouldBe true
       errors.exists(_.text().equals(Messages("error.common.problem_report.name_mandatory"))) shouldBe true
-      errors.exists(_.text().equals(Messages("error.email"))) shouldBe true
+      errors.exists(_.text().equals(Messages("error.common.problem_report.email_valid"))) shouldBe true
 
 
     }
@@ -107,7 +107,7 @@ class Covid19ControllerSpec  extends UnitSpec with WithFakeApplication {
       val errors = document.getElementsByClass("error-message").asScala
       errors.length should be(1)
       document.title() should be("Error: " + Messages("covid.heading"))
-      errors.exists(_.text().equals(Messages("error.email"))) shouldBe true
+      errors.exists(_.text().equals(Messages("error.common.problem_report.email_valid"))) shouldBe true
     }
 
     "display error if email is invalid"  in new Covid19ControllerApp(fakeApplication){
@@ -122,7 +122,7 @@ class Covid19ControllerSpec  extends UnitSpec with WithFakeApplication {
       val errors = document.getElementsByClass("error-message").asScala
       errors.length should be(1)
       document.title() should be("Error: " + Messages("covid.heading"))
-      errors.exists(_.text().equals(Messages("error.email"))) shouldBe true
+      errors.exists(_.text().equals(Messages("error.common.problem_report.email_valid"))) shouldBe true
     }
 
     "display error if email is too long"  in new Covid19ControllerApp(fakeApplication){
@@ -137,7 +137,7 @@ class Covid19ControllerSpec  extends UnitSpec with WithFakeApplication {
       val errors = document.getElementsByClass("error-message").asScala
       errors.length should be(2)
       document.title() should be("Error: " + Messages("covid.heading"))
-      errors.exists(_.text().equals(Messages("error.email"))) shouldBe true
+      errors.exists(_.text().equals(Messages("error.common.problem_report.email_valid"))) shouldBe true
       errors.exists(_.text().equals(Messages("deskpro.email_too_long"))) shouldBe true
     }
 
