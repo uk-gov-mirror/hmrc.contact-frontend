@@ -1,0 +1,37 @@
+@*
+ * Copyright 2020 HM Revenue & Customs
+ *
+ *@
+
+@import config.CountdownHelper
+
+@this(countdownHelper: CountdownHelper)
+@()(implicit request: RequestHeader, messages: Messages, appConfig: AppConfig)
+
+@title = {@messages("transition_countdown.title")}
+@text = {@messages("transition_countdown.text")}
+@url = {@messages("transition_countdown.url")}
+
+@countdown = {
+  @if(title.toString != "") {
+    <h2 class="gem-c-transition-countdown__title">@title</h2>
+  }
+  @if(countdownHelper.show) {
+    <p class="gem-c-transition-countdown__countdown">
+      <span class="gem-c-transition-countdown__countdown-number">@countdownHelper.daysLeftText.head</span><span class="gem-c-transition-countdown__countdown-number">@countdownHelper.daysLeftText.last</span>
+      <span class="gem-c-transition-countdown__countdown-text">@countdownHelper.daysText</span>
+    </p>
+  }
+  @if(text.toString != "") {
+    <p class="gem-c-transition-countdown__text">@text</p>
+  }
+}
+@if(url.toString != "") {
+  <a href="@url" class="gem-c-transition-countdown gem-c-transition-countdown--cta govuk-link" lang="en" dir="ltr">
+  @countdown
+  </a>
+} else {
+  <div class="gem-c-transition-countdown" lang="en" dir="ltr">
+  @countdown
+  </div>
+}

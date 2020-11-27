@@ -3,13 +3,14 @@
  *
  *@
 
-@import views.html.partials.{Layout, Heading2, Paragraph}
+@import views.html.partials.{Layout, Heading2, Paragraph, TransitionCountdown}
 
-@this(govukPanel: GovukPanel, mainLayout: Layout, h2: Heading2, p: Paragraph)
+@this(govukPanel: GovukPanel, mainLayout: Layout, h2: Heading2, p: Paragraph, transitionCountdown: TransitionCountdown)
 @()(implicit request: RequestHeader, messages: Messages, appConfig: AppConfig)
 
 @mainLayout(pageTitle = Messages("accessibility.heading")) {
     @govukPanel(Panel(title = Text(Messages("accessibility.confirmation.title"))))
     @h2(content = Text(messages("accessibility.confirmation.subheading")))
     @p(content = Text(messages("accessibility.confirmation.paragraph")))
+    @transitionCountdown()
 }

@@ -125,3 +125,9 @@ accessibility.confirmation.paragraph=Rydym yn adolygu ac yn ceisio mynd i''r afa
 
 # FIXME: to remove once play-frontend version is enabled permanently
 accessibility.close.window=Gallwch nawr cau''r ffenestr neu''r tab hwn.
+
+transition_countdown.day_to_go=day to go
+transition_countdown.days_to_go=days to go
+transition_countdown.title=Brexit transition
+transition_countdown.text=Check you’re ready for 2021
+transition_countdown.url=https://www.gov.uk/transition
