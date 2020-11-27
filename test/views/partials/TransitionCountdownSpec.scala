@@ -5,14 +5,14 @@
 
 package views.partials
 
-import java.util.{Calendar, GregorianCalendar}
+import java.time.ZonedDateTime
 
 import _root_.helpers.{JsoupHelpers, MessagesSupport}
-import config.{AppConfig, CountdownHelper, CurrentDateHelper}
+import config.{AppConfig, CurrentTimeHelper, TransitionHelper}
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 import org.scalatestplus.play.guice.GuiceOneAppPerSuite
-import play.api.Application
+import play.api.{Application, Configuration}
 import play.api.i18n.Messages
 import play.api.inject.guice.GuiceApplicationBuilder
 import play.api.mvc.RequestHeader
@@ -37,82 +37,83 @@ class TransitionCountdownSpec
   implicit lazy val fakeRequest: RequestHeader = FakeRequest("GET", "/foo")
   implicit lazy val messages: Messages         = getMessages(app, fakeRequest)
   implicit lazy val appConfig: AppConfig       = app.injector.instanceOf[AppConfig]
+  val configuration: Configuration             = app.injector.instanceOf[Configuration]
 
   "the transition countdown component" should {
     "renders the countdown with single digits correctly" in {
-      val currentDateHelper                = new CurrentDateHelper {
-        override def getCurrentDate = new GregorianCalendar(2020, Calendar.DECEMBER, 31, 23, 0, 0)
+      val currentDateHelper                 = new CurrentTimeHelper {
+        override def getCurrentTime = ZonedDateTime.parse("2020-12-31T23:00:00Z[Europe/London]")
       }
-      val countdownHelper: CountdownHelper = new CountdownHelper(currentDateHelper)
+      val countdownHelper: TransitionHelper = new TransitionHelper(currentDateHelper, configuration)
 
       val transitionCountdown: TransitionCountdown = new TransitionCountdown(countdownHelper)
 
       val content = transitionCountdown()
 
-      content.select(".gem-c-transition-countdown")                 should have size 1
-      content.select(".gem-c-transition-countdown__countdown").text should be("01 day to go")
+      content.select(".hmrc-transition-countdown")                 should have size 1
+      content.select(".hmrc-transition-countdown__countdown").text should be("01 day to go")
     }
 
     "renders the countdown with double digits correctly" in {
-      val currentDateHelper                = new CurrentDateHelper {
-        override def getCurrentDate = new GregorianCalendar(2020, Calendar.DECEMBER, 21, 23, 0, 0)
+      val currentDateHelper                 = new CurrentTimeHelper {
+        override def getCurrentTime = ZonedDateTime.parse("2020-12-21T23:00:00Z[Europe/London]")
       }
-      val countdownHelper: CountdownHelper = new CountdownHelper(currentDateHelper)
+      val countdownHelper: TransitionHelper = new TransitionHelper(currentDateHelper, configuration)
 
       val transitionCountdown: TransitionCountdown = new TransitionCountdown(countdownHelper)
 
       val content = transitionCountdown()
 
-      content.select(".gem-c-transition-countdown")                 should have size 1
-      content.select(".gem-c-transition-countdown__countdown").text should be("11 days to go")
+      content.select(".hmrc-transition-countdown")                 should have size 1
+      content.select(".hmrc-transition-countdown__countdown").text should be("11 days to go")
     }
 
     "renders the call to action with title, countdown, and content" in {
-      val currentDateHelper                = new CurrentDateHelper {
-        override def getCurrentDate = new GregorianCalendar(2020, Calendar.DECEMBER, 31, 23, 0, 0)
+      val currentDateHelper                 = new CurrentTimeHelper {
+        override def getCurrentTime = ZonedDateTime.parse("2020-12-31T23:00:00Z[Europe/London]")
       }
-      val countdownHelper: CountdownHelper = new CountdownHelper(currentDateHelper)
+      val countdownHelper: TransitionHelper = new TransitionHelper(currentDateHelper, configuration)
 
       val transitionCountdown: TransitionCountdown = new TransitionCountdown(countdownHelper)
 
       val content = transitionCountdown()
 
-      content.select(".gem-c-transition-countdown[href='https://www.gov.uk/transition']") should have size 1
-      content.select(".gem-c-transition-countdown__title").first.text                     should be("Brexit transition")
-      content.select(".gem-c-transition-countdown__countdown").first.text                 should be("01 day to go")
-      content.select(".gem-c-transition-countdown__text").first.text                      should be("Check you’re ready for 2021")
+      content.select(".hmrc-transition-countdown[href='https://www.gov.uk/transition']") should have size 1
+      content.select(".hmrc-transition-countdown__title").first.text                     should be("Brexit transition")
+      content.select(".hmrc-transition-countdown__countdown").first.text                 should be("01 day to go")
+      content.select(".hmrc-transition-countdown__text").first.text                      should be("Check you’re ready for 2021")
     }
 
     "not render the countdown after transition" in {
-      val currentDateHelper                = new CurrentDateHelper {
-        override def getCurrentDate = new GregorianCalendar(2021, Calendar.JANUARY, 1, 9, 0, 0)
+      val currentDateHelper                 = new CurrentTimeHelper {
+        override def getCurrentTime = ZonedDateTime.parse("2021-01-01T09:00:00Z[Europe/London]")
       }
-      val countdownHelper: CountdownHelper = new CountdownHelper(currentDateHelper)
+      val countdownHelper: TransitionHelper = new TransitionHelper(currentDateHelper, configuration)
 
       val transitionCountdown: TransitionCountdown = new TransitionCountdown(countdownHelper)
 
       val content = transitionCountdown()
 
-      content.select(".gem-c-transition-countdown[href='https://www.gov.uk/transition']") should have size 1
-      content.select(".gem-c-transition-countdown__title").first.text                     should be("Brexit transition")
-      content.select(".gem-c-transition-countdown__countdown")                            should have size 0
-      content.select(".gem-c-transition-countdown__text").first.text                      should be("Check you’re ready for 2021")
+      content.select(".hmrc-transition-countdown[href='https://www.gov.uk/transition']") should have size 1
+      content.select(".hmrc-transition-countdown__title").first.text                     should be("Brexit transition")
+      content.select(".hmrc-transition-countdown__countdown")                            should have size 0
+      content.select(".hmrc-transition-countdown__text").first.text                      should be("Check you’re ready for 2021")
     }
 
     "not render the countdown if number of days is more than 2 digits" in {
-      val currentDateHelper                = new CurrentDateHelper {
-        override def getCurrentDate = new GregorianCalendar(2020, Calendar.SEPTEMBER, 23, 9, 0, 0)
+      val currentDateHelper                 = new CurrentTimeHelper {
+        override def getCurrentTime = ZonedDateTime.parse("2020-09-23T09:00:00Z[Europe/London]")
       }
-      val countdownHelper: CountdownHelper = new CountdownHelper(currentDateHelper)
+      val countdownHelper: TransitionHelper = new TransitionHelper(currentDateHelper, configuration)
 
       val transitionCountdown: TransitionCountdown = new TransitionCountdown(countdownHelper)
 
       val content = transitionCountdown()
 
-      content.select(".gem-c-transition-countdown[href='https://www.gov.uk/transition']") should have size 1
-      content.select(".gem-c-transition-countdown__title").first.text                     should be("Brexit transition")
-      content.select(".gem-c-transition-countdown__countdown")                            should have size 0
-      content.select(".gem-c-transition-countdown__text").first.text                      should be("Check you’re ready for 2021")
+      content.select(".hmrc-transition-countdown[href='https://www.gov.uk/transition']") should have size 1
+      content.select(".hmrc-transition-countdown__title").first.text                     should be("Brexit transition")
+      content.select(".hmrc-transition-countdown__countdown")                            should have size 0
+      content.select(".hmrc-transition-countdown__text").first.text                      should be("Check you’re ready for 2021")
     }
   }
 }

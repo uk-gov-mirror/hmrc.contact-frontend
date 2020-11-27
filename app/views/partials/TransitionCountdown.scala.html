@@ -3,35 +3,36 @@
  *
  *@
 
-@import config.CountdownHelper
+@import config.TransitionHelper
 
-@this(countdownHelper: CountdownHelper)
-@()(implicit request: RequestHeader, messages: Messages, appConfig: AppConfig)
-
-@title = {@messages("transition_countdown.title")}
-@text = {@messages("transition_countdown.text")}
-@url = {@messages("transition_countdown.url")}
-
+@this(transitionHelper: TransitionHelper)
+@()(implicit messages: Messages)
 @countdown = {
-  @if(title.toString != "") {
-    <h2 class="gem-c-transition-countdown__title">@title</h2>
+  @defining(messages("transition.countdown.title")) { title =>
+    @if(title != "") {
+      <h2 class="hmrc-transition-countdown__title">@title</h2>
+    }
   }
-  @if(countdownHelper.show) {
-    <p class="gem-c-transition-countdown__countdown">
-      <span class="gem-c-transition-countdown__countdown-number">@countdownHelper.daysLeftText.head</span><span class="gem-c-transition-countdown__countdown-number">@countdownHelper.daysLeftText.last</span>
-      <span class="gem-c-transition-countdown__countdown-text">@countdownHelper.daysText</span>
+  @if(transitionHelper.show) {
+    <p class="hmrc-transition-countdown__countdown">
+      <span class="hmrc-transition-countdown__countdown-number">@transitionHelper.daysLeftText.head</span><span class="hmrc-transition-countdown__countdown-number">@transitionHelper.daysLeftText.last</span>
+      <span class="hmrc-transition-countdown__countdown-text">@transitionHelper.daysText</span>
     </p>
   }
-  @if(text.toString != "") {
-    <p class="gem-c-transition-countdown__text">@text</p>
+  @defining(messages("transition.countdown.text")) { text =>
+    @if(text != "") {
+      <p class="hmrc-transition-countdown__text">@text</p>
+    }
   }
 }
-@if(url.toString != "") {
-  <a href="@url" class="gem-c-transition-countdown gem-c-transition-countdown--cta govuk-link" lang="en" dir="ltr">
-  @countdown
-  </a>
-} else {
-  <div class="gem-c-transition-countdown" lang="en" dir="ltr">
-  @countdown
-  </div>
+@defining(messages("transition.url")) { url =>
+  @if(url != "") {
+    <a href="@url" class="hmrc-transition-countdown hmrc-transition-countdown--cta govuk-link" lang="en" dir="ltr">
+      @countdown
+    </a>
+  } else {
+    <div class="hmrc-transition-countdown" lang="en" dir="ltr">
+      @countdown
+    </div>
+  }
 }

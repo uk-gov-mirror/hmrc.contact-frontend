@@ -126,8 +126,8 @@ accessibility.confirmation.paragraph=We have received your message and will repl
 # FIXME: to remove once play-frontend version is enabled permanently
 accessibility.close.window=You can now close this window or tab.
 
-transition_countdown.day_to_go=day to go
-transition_countdown.days_to_go=days to go
-transition_countdown.title=Brexit transition
-transition_countdown.text=Check you’re ready for 2021
-transition_countdown.url=https://www.gov.uk/transition
+transition.countdown.day_to_go=day to go
+transition.countdown.days_to_go=days to go
+transition.countdown.title=Brexit transition
+transition.countdown.text=Check you’re ready for 2021
+transition.url=https://www.gov.uk/transition
