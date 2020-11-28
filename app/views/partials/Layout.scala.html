@@ -5,21 +5,20 @@
 
 @import config.AppConfig
 @import uk.gov.hmrc.govukfrontend.views.viewmodels.header.Header
-@import views.html.partials.LanguageSelection
-@import views.html.partials.Head
-@import views.html.partials.Scripts
+@import views.html.partials.{GovukTemplateWrapper, TransitionCountdown, Head, LanguageSelection, Scripts}
 
 @this(
-        govukLayout: GovukLayout,
+        govukLayout: GovukTemplateWrapper,
         govukHeader: GovukHeader,
         hmrcFooter: HmrcFooter,
         hmrcBanner: HmrcBanner,
         head: Head,
         languageSelection: LanguageSelection,
-        scripts: Scripts
+        scripts: Scripts,
+        transitionCountdown: TransitionCountdown
 )
 
-@(pageTitle: String)(contentBlock: Html)(implicit request: RequestHeader, messages: Messages, appConfig: AppConfig)
+@(pageTitle: String, withTransitionCountdown: Boolean = false)(contentBlock: Html)(implicit request: RequestHeader, messages: Messages, appConfig: AppConfig)
 @import appConfig._
 
 @headerBlock = {
@@ -43,5 +42,6 @@
     headerBlock = Some(headerBlock),
     scriptsBlock = Some(scripts()),
     beforeContentBlock = Some(beforeContentBlock),
-    footerBlock = Some(hmrcFooter())
+    footerBlock = Some(hmrcFooter()),
+    sidebarBlock = if(withTransitionCountdown) Some(transitionCountdown()) else None
 )(contentBlock)

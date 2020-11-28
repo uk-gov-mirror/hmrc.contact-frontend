@@ -8,9 +8,8 @@
 @this(govukPanel: GovukPanel, mainLayout: Layout, h2: Heading2, p: Paragraph, transitionCountdown: TransitionCountdown)
 @()(implicit request: RequestHeader, messages: Messages, appConfig: AppConfig)
 
-@mainLayout(pageTitle = Messages("accessibility.heading")) {
+@mainLayout(pageTitle = Messages("accessibility.heading"), withTransitionCountdown = true) {
     @govukPanel(Panel(title = Text(Messages("accessibility.confirmation.title"))))
     @h2(content = Text(messages("accessibility.confirmation.subheading")))
     @p(content = Text(messages("accessibility.confirmation.paragraph")))
-    @transitionCountdown()
 }
