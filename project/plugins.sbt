@@ -16,6 +16,4 @@ addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.7.4")
 
 addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.4.0")
 
-addSbtPlugin("org.irundaia.sbt" % "sbt-sassify" % "1.4.11")
-
 addSbtPlugin("com.typesafe.sbt" % "sbt-gzip" % "1.0.2")

@@ -7,17 +7,17 @@
 @import uk.gov.hmrc.hmrcfrontend.views.viewmodels.header.Header
 @import uk.gov.hmrc.hmrcfrontend.views.html.helpers.HmrcStandardFooter
 @import views.html.partials.LanguageSelection
-@import views.html.partials.Head
-@import views.html.partials.Scripts
+@import uk.gov.hmrc.hmrcfrontend.views.html.helpers.HmrcHead
+@import uk.gov.hmrc.hmrcfrontend.views.html.helpers.HmrcScripts
 
 @this(
         govukLayout: GovukLayout,
         hmrcHeader: HmrcHeader,
         hmrcStandardFooter: HmrcStandardFooter,
         hmrcBanner: HmrcBanner,
-        head: Head,
-        languageSelection: LanguageSelection,
-        scripts: Scripts
+        hmrcHead: HmrcHead,
+        hmrcScripts: HmrcScripts,
+        languageSelection: LanguageSelection
 )
 
 @(pageTitle: String, beforeContent: Option[Html] = None, isWelshTranslationAvailable: Boolean = true)(contentBlock: Html)(implicit request: RequestHeader, messages: Messages, appConfig: AppConfig)
@@ -40,9 +40,9 @@
 
 @govukLayout(
     pageTitle = Some(pageTitle),
-    headBlock = Some(head()),
+    headBlock = Some(hmrcHead()),
     headerBlock = Some(headerBlock),
-    scriptsBlock = Some(scripts()),
+    scriptsBlock = Some(hmrcScripts()),
     beforeContentBlock = Some(beforeContentBlock),
     footerBlock = Some(hmrcStandardFooter())
 )(contentBlock)
