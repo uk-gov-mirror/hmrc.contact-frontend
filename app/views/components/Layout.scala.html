@@ -15,15 +15,14 @@
  *@
 
 @import config.AppConfig
-@import uk.gov.hmrc.hmrcfrontend.views.html.helpers.{HmrcStandardHeader, HmrcStandardFooter, HmrcScripts, HmrcHead}
-@import views.html.components.LanguageSelection
+@import uk.gov.hmrc.hmrcfrontend.views.html.helpers.{HmrcStandardHeader, HmrcStandardFooter, HmrcScripts, HmrcHead, HmrcLanguageSelectHelper}
 
 @this(
         govukLayout: GovukLayout,
         hmrcStandardHeader: HmrcStandardHeader,
         hmrcStandardFooter: HmrcStandardFooter,
         head: HmrcHead,
-        languageSelection: LanguageSelection,
+        hmrcLanguageSelectHelper: HmrcLanguageSelectHelper,
         scripts: HmrcScripts
 )
 
@@ -31,7 +30,7 @@
 
 @beforeContentBlock = {
     @if(isWelshTranslationAvailable && appConfig.enableLanguageSwitching) {
-        @languageSelection()
+        @hmrcLanguageSelectHelper()
     }
     @beforeContent
 }
