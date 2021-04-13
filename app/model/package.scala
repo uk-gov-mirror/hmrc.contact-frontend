@@ -58,8 +58,8 @@ object FeedbackFormConfig {
 }
 
 case class SurveyForm(
-  helpful: Option[Int],
-  speed: Option[Int],
+  helpful: List[Int],
+  speed: List[Int],
   improve: Option[String],
   ticketId: Option[String],
   serviceId: Option[String]

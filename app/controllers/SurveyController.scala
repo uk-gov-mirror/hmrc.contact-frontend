@@ -75,15 +75,41 @@ class SurveyController @Inject() (
 
   def submit(ticketId: String, serviceId: String) = Action.async { implicit request =>
     Future.successful {
+      println("")
+      println("")
+      println(" ----------- ")
+      println("")
+      println("")
+      println(request.body)
+      println("")
+      println("")
+      println(" ----------- ")
+      println("")
+      println("")
       playFrontendSurveyForm.bindFromRequest.fold(
-        formWithErrors =>
+        formWithErrors => {
+          println(formWithErrors)
+          println("")
+          println("")
+          println(" ----------- ")
+          println("")
+          println("")
           BadRequest(
             playFrontendSurveyPage(
               formWithErrors,
               routes.SurveyController.submit(ticketId, serviceId)
             )
-          ),
-        _ => submitSurveyAction
+          )
+        },
+        successForm => {
+          println(successForm.speed)
+          println("")
+          println("")
+          println(" ----------- ")
+          println("")
+          println("")
+          submitSurveyAction
+        }
       )
     }
   }
@@ -127,8 +153,8 @@ class SurveyController @Inject() (
         auditType = "DeskproSurvey",
         tags = hc.headers.toMap,
         detail = collection.immutable.HashMap(
-          "helpful"   -> formData.helpful.getOrElse(0).toString,
-          "speed"     -> formData.speed.getOrElse(0).toString,
+          "helpful"   -> formData.helpful.toString,
+          "speed"     -> formData.speed.toString,
           "improve"   -> formData.improve.getOrElse(""),
           "ticketId"  -> formData.ticketId.getOrElse(""),
           "serviceId" -> formData.serviceId.getOrElse("")
@@ -136,7 +162,7 @@ class SurveyController @Inject() (
       )
     )
 
-  private val ratingScale = optional(number(min = 1, max = 5, strict = false))
+  private val ratingScale = list(number)
 
   private[controllers] def surveyForm = Form[SurveyForm](
     mapping(
@@ -148,18 +174,20 @@ class SurveyController @Inject() (
     )(SurveyForm.apply)(SurveyForm.unapply)
   )
 
-  private[controllers] def playFrontendSurveyForm = Form[SurveyForm](
-    mapping(
-      "helpful"    -> ratingScale
-        .verifying("survey.helpful.error.required", helpful => helpful.isDefined),
-      "speed"      -> ratingScale
-        .verifying("survey.speed.error.required", speed => speed.isDefined),
-      "improve"    -> optional(text)
-        .verifying("survey.improve.error.length", improve => improve.getOrElse("").length <= 2500),
-      "ticket-id"  -> optional(text),
-      "service-id" -> optional(text)
-    )(SurveyForm.apply)(SurveyForm.unapply)
-  )
+  private[controllers] def playFrontendSurveyForm = {
+    Form[SurveyForm](
+      mapping(
+        "helpful" -> ratingScale
+          .verifying("survey.helpful.error.required", helpful => helpful.nonEmpty),
+        "speed" -> ratingScale
+          .verifying("survey.speed.error.required", speed => speed.nonEmpty),
+        "improve" -> optional(text)
+          .verifying("survey.improve.error.length", improve => improve.getOrElse("").length <= 2500),
+        "ticket-id" -> optional(text),
+        "service-id" -> optional(text)
+      )(SurveyForm.apply)(SurveyForm.unapply)
+    )
+  }
 
   private[controllers] def emptyForm(
     serviceId: Option[String] = None,
@@ -167,8 +195,8 @@ class SurveyController @Inject() (
   ): Form[SurveyForm] =
     surveyForm.fill(
       SurveyForm(
-        helpful = None,
-        speed = None,
+        helpful = List.empty,
+        speed = List.empty,
         improve = None,
         ticketId = ticketId,
         serviceId = serviceId

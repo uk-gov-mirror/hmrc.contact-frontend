@@ -16,23 +16,23 @@
 
 @import uk.gov.hmrc.govukfrontend.views.html.components.implicits._
 
-@this(govukRadios: GovukRadios)
+@this(govukCheckboxes: GovukCheckboxes)
 
 @(
     field: Field,
     legend: String,
     items: Seq[(String, String)]
 )(implicit messages: Messages)
-@govukRadios(Radios(
+@govukCheckboxes(Checkboxes(
   fieldset = Some(Fieldset(
     legend = Some(Legend(
       content = Text(legend)
     ))
   )),
   items = items map { case (value: String, label: String) =>
-    RadioItem(
+    CheckboxItem(
       content = Text(label),
-      value = Some(value)
+      value = value
     )
   }).withFormField(field)
 )

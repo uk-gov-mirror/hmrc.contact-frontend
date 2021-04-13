@@ -15,7 +15,8 @@ object AppDependencies {
     "uk.gov.hmrc"              %% "auth-client"                % "3.3.0-play-27",
     "commons-validator"         % "commons-validator"          % "1.6",
     "org.apache.httpcomponents" % "httpclient"                 % "4.4.1",
-    "uk.gov.hmrc"              %% "play-frontend-hmrc"         % "0.56.0-play-27"
+    "uk.gov.hmrc"              %% "play-frontend-hmrc"         % "0.57.0-play-27-SNAPSHOT",
+    "uk.gov.hmrc"              %% "play-frontend-govuk"        % s"0.70.0-play-27-SNAPSHOT"
   )
 
   private def test(scope: String) = Seq(
@@ -26,6 +27,7 @@ object AppDependencies {
     "com.typesafe.play"      %% "play-test"                % "2.7.4"          % scope,
     "org.mockito"             % "mockito-all"              % "2.0.2-beta"     % scope,
     "org.pegdown"             % "pegdown"                  % "1.6.0"          % scope,
+    "org.jsoup"               % "jsoup"                    % "1.11.3"         % scope,
     "org.jsoup"               % "jsoup"                    % "1.11.3"         % scope,
     "com.github.tomakehurst"  % "wiremock"                 % "1.58"           % scope,
     "org.scalacheck"         %% "scalacheck"               % "1.14.0"         % scope,
