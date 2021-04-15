@@ -17,13 +17,13 @@
 @import uk.gov.hmrc.govukfrontend.views.html.components.{FormWithCSRF => PlayFrontendFormWithCSRF}
 @import uk.gov.hmrc.govukfrontend.views.html.components.implicits._
 @import model.FeedbackForm
-@import views.html.components.{Layout, InputText, InputRadios, InputHidden, InputCharacterCount, Heading1, Paragraph, ReportTechnicalIssue}
+@import views.html.components.{Layout, InputText, InputCheckboxes, InputHidden, InputCharacterCount, Heading1, Paragraph, ReportTechnicalIssue}
 
 @this(
     inputCharacterCount: InputCharacterCount,
     inputHidden: InputHidden,
     inputText: InputText,
-    inputRadios: InputRadios,
+    inputCheckboxes: InputCheckboxes,
     govukButton: GovukButton,
     govukErrorSummary: GovukErrorSummary,
     formWithCSRF: PlayFrontendFormWithCSRF,
@@ -53,7 +53,7 @@
           @inputHidden(backUrlField)
         }
       }
-      @inputRadios(
+      @inputCheckboxes(
         feedbackForm("feedback-rating"),
         legend = Messages("form.online.services"),
         items = Seq(

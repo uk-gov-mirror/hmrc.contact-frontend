@@ -15,6 +15,7 @@ object AppDependencies {
     "uk.gov.hmrc"              %% "auth-client"                % "3.3.0-play-27",
     "commons-validator"         % "commons-validator"          % "1.6",
     "org.apache.httpcomponents" % "httpclient"                 % "4.4.1",
+    "uk.gov.hmrc"              %% "play-frontend-govuk"        % "0.70.0-play-27-SNAPSHOT",
     "uk.gov.hmrc"              %% "play-frontend-hmrc"         % "0.57.0-play-27"
   )
 

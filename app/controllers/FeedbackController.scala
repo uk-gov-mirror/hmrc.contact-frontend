@@ -290,7 +290,7 @@ object FeedbackFormBind {
   ) =
     FeedbackFormBind.form.fill(
       FeedbackForm(
-        experienceRating = None,
+        experienceRating = Set.empty,
         name = "",
         email = "",
         comments = "",
@@ -306,11 +306,11 @@ object FeedbackFormBind {
   def form =
     Form[FeedbackForm](
       mapping(
-        "feedback-rating"   -> optional(text)
-          .verifying("feedback.rating.error.required", rating => rating.isDefined && !rating.get.trim.isEmpty)
+        "feedback-rating"   -> set(text)
+          .verifying("feedback.rating.error.required", rating => !rating.isEmpty)
           .verifying(
             "feedback.rating.error.invalid",
-            rating => rating.map(validExperiences.contains(_)).getOrElse(true)
+            rating => !rating.map(validExperiences.contains(_)).isEmpty
           ),
         "feedback-name"     -> text
           .verifying("feedback.name.error.required", name => !name.trim.isEmpty)

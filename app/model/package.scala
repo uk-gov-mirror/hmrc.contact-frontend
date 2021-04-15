@@ -39,7 +39,7 @@ case class ProblemReport(
 )
 
 case class FeedbackForm(
-  experienceRating: Option[String],
+  experienceRating: Set[String],
   name: String,
   email: String,
   comments: String,
